@@ -74,7 +74,8 @@ export default function HeroBanner({ heroBanner }: IProps) {
                 className='object-contain max-h-full max-w-full select-none'
                 src={images[0]}
                 alt={name}
-                style={{width: 600, height: 600}}
+                width={600}
+                height={600}
               />
 
               {/* Description */}
