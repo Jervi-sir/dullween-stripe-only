@@ -71,7 +71,7 @@ export default function HeroBanner({ heroBanner }: IProps) {
 
             {/* PRODUCT IMAGE */}
             <div className='relative bg-white w-full h-80 sm:h-96 py-10 sm:w-1/2 flex items-center justify-center'>
-              <img
+              <Image
                 className='object-contain max-h-full max-w-full select-none'
                 src={images[0]}
                 alt={name}
