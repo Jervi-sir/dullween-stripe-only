@@ -1,4 +1,3 @@
-import { client } from '@/lib/client'
 import { ProductCard, HeroBanner } from '@/components'
 
 import { IProduct, IHeroBanner } from '@/types'

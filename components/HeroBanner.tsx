@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { urlFor } from '@/lib/client'
 import { IHeroBanner } from '@/types'
 import { useContext } from 'react';
 import { ToastContext } from '@/context/toastContext';

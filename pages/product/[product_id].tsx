@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { client, urlFor } from '@/lib/client'
 import { ProductCard } from '@/components'
 import { useStateContext } from '@/context/StateContext'
 

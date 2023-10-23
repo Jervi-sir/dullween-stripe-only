@@ -1,6 +1,5 @@
 import { stripe } from './stripe'
 
-
 export const getProducts = async () => {
   const productsResponse = await stripe.products.list();
   const products = productsResponse.data;

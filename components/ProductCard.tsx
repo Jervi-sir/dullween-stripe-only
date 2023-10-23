@@ -1,7 +1,6 @@
 import styles from '@/styles/ProductCard.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
-import { urlFor } from '@/lib/client'
 import { useStateContext } from '@/context/StateContext'
 
 import { IProduct } from '@/types'

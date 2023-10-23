@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { toast } from 'react-hot-toast'
 import { AiFillShopping } from 'react-icons/ai'
-import { urlFor } from '@/lib/client'
 import { useStateContext } from '@/context/StateContext'
 import getStripe from '@/lib/getStripe'
 
