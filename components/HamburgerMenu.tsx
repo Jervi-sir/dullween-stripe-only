@@ -36,8 +36,8 @@ export default function HamburgerMenu() {
           <ul className='px-1 xs3:px-7 flex flex-col justify-center items-center pt-10 mb-6 select-none'>
             
             {
-              categoryName?.map((element) => (
-                <li className='mb-1'>
+              categoryName?.map((element, index) => (
+                <li className='mb-1' key={index}>
                   <Link
                     className={`${styles.hamburgerMenuLink} first-letter:uppercase text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
                     href={`/category/${element}`}

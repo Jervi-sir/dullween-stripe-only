@@ -53,8 +53,8 @@ export default function Header() {
               {/* TODO: Move to separate container where you only need to pass the menu item text and link url */}
               
               {
-                categoryName.map(element => (
-                  <li className='mr-5' key={element}>
+                categoryName.map((element, index) => (
+                  <li className='mr-5' key={index}>
                     <Link
                       className={`${styles.headerLink} first-letter:uppercase text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
                       href={`/category/${element}`}

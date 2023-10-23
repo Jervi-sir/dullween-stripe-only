@@ -35,7 +35,7 @@ export default async function handler(
         line_items: req.body.map((item: ICartItem) => {
           // access sanity image
           // @link https://www.sanity.io/manage
-          const img = item.image[0].asset._ref
+          const img = item.images[0]
           const newImage = img
             .replace(
               'image-',
@@ -53,7 +53,7 @@ export default async function handler(
                 images: [newImage],
               },
 
-              unit_amount: item.price * 100, // convert price to cents
+              unit_amount: item.price.unit_amount * 100, // convert price to cents
             },
 
             adjustable_quantity: {
