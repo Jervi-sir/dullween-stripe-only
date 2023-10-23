@@ -3,13 +3,8 @@ import { ICartItem } from '@/types'
 import Stripe from 'stripe'
 
 export const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string, {
-  apiVersion: '2023-10-16',
+  apiVersion: process.env.NEXT_PUBLIC_STRIPE_API_VERSION as "2023-10-16",
 })
-
-
-// TIP: You can use 4242 4242 4242 4242 as a test card number with 424 as the CVC and any future date for the expiration date in the stripe checkout form for testing purposes
-// TIP: Remember to set stripe to test mode in the dashboard
-// TIP: You can go to the stripe settings / Business settings / Customer emails and enable "Successful payments" to send an email to the customer when the payment is successful (the email will not be sent in test mode)
 
 export default async function handler(
   req: NextApiRequest,
@@ -17,7 +12,6 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     // console.log(req.body)
-
     try {
       const params = {
         submit_type: 'pay',
@@ -29,33 +23,21 @@ export default async function handler(
         // @link https://dashboard.stripe.com/test/shipping-rates
         shipping_options: [
           // FREE SHIPPING
-          { shipping_rate: 'shr_1Mp2HsKA1UjcyalEY6GCZK8A' },
+          { shipping_rate: process.env.NEXT_PUBLIC_STRIPE_FREE_SHIPPING_RATE },
         ],
 
         line_items: req.body.map((item: ICartItem) => {
-          // access sanity image
-          // @link https://www.sanity.io/manage
           const img = item.images[0]
-          const newImage = img
-            .replace(
-              'image-',
-              // NOTE: use sanity project id in the url
-              `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production/`
-            )
-            // NOTE: put .jpg or .png if you don't use webp images (sanity)
-            .replace('-jpg', '.jpg')
 
           return {
             price_data: {
               currency: 'eur',
               product_data: {
                 name: item.name,
-                images: [newImage],
+                images: [img],
               },
-
-              unit_amount: item.price.unit_amount * 100, // convert price to cents
+              unit_amount: item.price.unit_amount,
             },
-
             adjustable_quantity: {
               enabled: true,
               minimum: 1,
