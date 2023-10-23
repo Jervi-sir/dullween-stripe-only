@@ -5,6 +5,9 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 import { useStateContext } from '@/context/StateContext'
 import { Cart } from '@/components'
 import { HamburgerMenu } from '@/components'
+import categoryName from '@/utils/categoryNames'
+import { ToastContext } from '@/context/toastContext'
+import { useContext } from 'react';
 
 export default function Header() {
   const {
@@ -14,6 +17,8 @@ export default function Header() {
     setShowHamburgerMenu,
     totalQuantities,
   } = useStateContext()
+
+  const { showLoading } = useContext(ToastContext);
 
   return (
     <>
@@ -31,6 +36,7 @@ export default function Header() {
                 alt='logo'
                 width={29}
                 height={29}
+                onClick={showLoading}
               />
             </Link>
 
@@ -45,28 +51,26 @@ export default function Header() {
             {/* Header Menu */}
             <ul className='px-7 hidden sm:flex select-none'>
               {/* TODO: Move to separate container where you only need to pass the menu item text and link url */}
-              <li className='mr-5'>
-                <Link
-                  className={`${styles.headerLink} text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
-                  href='/iphone'
-                >
-                  iPhone
-                </Link>
-              </li>
-
-              <li className='mr-5'>
-                <Link
-                  className={`${styles.headerLink} text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
-                  href='/airpods'
-                >
-                  AirPods
-                </Link>
-              </li>
+              
+              {
+                categoryName.map(element => (
+                  <li className='mr-5' key={element}>
+                    <Link
+                      className={`${styles.headerLink} first-letter:uppercase text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
+                      href={`/category/${element}`}
+                      onClick={showLoading}
+                    >
+                      {element}
+                    </Link>
+                  </li>
+                ))
+              }
 
               <li className='mr-5'>
                 <Link
                   className={`${styles.headerLink} text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
                   href='/about-us'
+                  onClick={showLoading}
                 >
                   About Us
                 </Link>

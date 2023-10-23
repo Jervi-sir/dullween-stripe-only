@@ -7,6 +7,8 @@ import { ProductCard } from '@/components'
 import { useStateContext } from '@/context/StateContext'
 
 import { IProduct } from '@/types'
+import { getThisProduct } from '../api/getThisProduct'
+import { getProducts } from '../api/getProducts'
 
 interface IProps {
   product: IProduct
@@ -18,8 +20,7 @@ export default function ProductDetailPage({ product, products }: IProps) {
   const [index, setIndex] = useState(0)
 
   const handleBuyNow = () => {
-    // TIP: Here we pass product as any because eventually we will add a quantity property to the product object (see context/StateContext.tsx)
-    // TIP: Ideally we would avoid this by creating a new object with the product properties and the quantity property
+
     onAdd(product, qty)
 
     setShowCart(true)
@@ -35,7 +36,7 @@ export default function ProductDetailPage({ product, products }: IProps) {
         <div className='bg-white w-full h-80 sm:h-96 py-10 sm:w-1/2 flex items-center justify-center'>
           <Image
             className='object-contain max-h-full max-w-full select-none'
-            src={urlFor(product.image && product.image[index]).url()}
+            src={product.images[0]}
             alt={product.name}
             width={600}
             height={600}
@@ -44,7 +45,7 @@ export default function ProductDetailPage({ product, products }: IProps) {
 
         {/* PRODUCT SELECTABLE IMAGES */}
         <nav className='w-full flex justify-end items-center h-16 sm:h-full sm:w-16 mb-3 overflow-hidden sm:flex-col gap-2 px-4'>
-          {product.image?.map((item, i) => (
+          {product.images?.map((item, i) => (
             <div
               key={i}
               className={`rounded-md ${
@@ -54,7 +55,7 @@ export default function ProductDetailPage({ product, products }: IProps) {
               <Image
                 width={50}
                 height={50}
-                src={urlFor(item).url()}
+                src={item}
                 className={`h-16 sm:h-16 sm:w-20 object-contain select-none`}
                 // select image on mouse enter (hover state on desktop, click on mobile)
                 onMouseEnter={() => setIndex(i)}
@@ -70,10 +71,10 @@ export default function ProductDetailPage({ product, products }: IProps) {
             <h1 className='wordSpacingTight text-3xl font-bold tracking-tight leading-8 mb-1'>
               {product.name}
             </h1>
-            <p className='text-lg font-normal'>{product.details}</p>
+            <p className='text-lg font-normal'>{product.description}</p>
             <p className='wordSpacingTight tracking-tight text-4xl font-extrabold mb-4'>
               <span className='mr-2'>&euro;</span>
-              {product.price}
+              {product.price.unit_amount}
             </p>
 
             {/* Product Quantity */}
@@ -132,12 +133,12 @@ export default function ProductDetailPage({ product, products }: IProps) {
         <section className='container mx-auto flex gap-12 justify-center items-center py-16'>
           {products.map((currentProduct: any) => (
             <>
-              {currentProduct._id !== product._id ? (
-                <div key={currentProduct._id}>
+              {currentProduct.id !== product.id ? (
+                <div key={currentProduct.id}>
                   <ProductCard product={currentProduct} />
                 </div>
               ) : (
-                <div key={currentProduct._id} className='hidden'></div>
+                <div key={currentProduct.id} className='hidden'></div>
               )}
             </>
           ))}
@@ -150,10 +151,10 @@ export default function ProductDetailPage({ product, products }: IProps) {
 // -< getStaticPaths >-
 // Fetch all products from sanity to generate paths (needed for SSG below)
 export const getStaticPaths: GetStaticPaths = async () => {
-  const products = await client.fetch('*[_type == "product"]')
+  const products = await getProducts()
 
   const paths = products.map((product: any) => ({
-    params: { slug: product.slug.current },
+    params: { product_id: product.id },
   }))
 
   return {
@@ -168,18 +169,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 // -< getStaticProps >-
-// Fetch the product from sanity that matches the slug in the url
+// Fetch the product from sanity that matches the product_id in the url
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as { slug: string }
+  const { product_id } = params as { product_id: string }
 
-  const product = await client.fetch(
-    // This is a sanity specific query that will get the product with the slug that matches the slug in the url
-    // TIP: the [0] is used so only the first result is returned
-    `*[_type == "product" && slug.current == $slug][0]`,
-    { slug }
-  )
-
-  const products = await client.fetch('*[_type == "product"]')
+  const product = await getThisProduct({ product_id: product_id })
+  const products = await getProducts()
 
   return {
     props: {
@@ -187,8 +182,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       products,
     },
 
-    // TIP: Change this if the application needs to be updated more frequently or less or not at all
-    // Revalidate at most once per minute
     revalidate: 60,
   }
 }

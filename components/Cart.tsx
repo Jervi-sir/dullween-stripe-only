@@ -148,7 +148,7 @@ export default function Cart() {
               cartItems.map((item) => (
                 <>
                   <div
-                    key={item._id}
+                    key={item.id}
                     className={`${styles.cartCard} relative bg-white text-black rounded-lg w-full px-4 py-10 xs4:py-3 flex justify-between items-center mb-8`}
                   >
                     <div className='flex flex-col xs:flex-row justify-center items-start xs:items-center'>
@@ -157,7 +157,7 @@ export default function Cart() {
                         <div className='relative rounded-2xl mr-4'>
                           <Image
                             className='w-24 h-24 object-contain p-2 select-none'
-                            src={urlFor(item?.image[0]).url()}
+                            src={item?.images[0]}
                             alt='Product Image'
                             width={50}
                             height={50}
@@ -177,7 +177,7 @@ export default function Cart() {
                             <button
                               className='w-8 h-8 rounded-full bg-black text-red-400 text-3xl font-semibold text-center flex justify-center items-center select-none p-1 mr-1 hover:text-red-300 active:text-red-500 active:scale-95'
                               onClick={() =>
-                                updateCartItemQuantity(item._id, 'dec')
+                                updateCartItemQuantity(item.id, 'dec')
                               }
                             >
                               -
@@ -188,7 +188,7 @@ export default function Cart() {
                             <button
                               className='w-8 h-8 rounded-full bg-black text-green-400 text-3xl font-semibold text-center flex justify-center items-center select-none p-1 mr-1 hover:text-green-300 active:text-green-500 active:scale-95'
                               onClick={() =>
-                                updateCartItemQuantity(item._id, 'inc')
+                                updateCartItemQuantity(item.id, 'inc')
                               }
                             >
                               +
@@ -201,12 +201,12 @@ export default function Cart() {
                     {/* Product Price */}
                     <button
                       className='absolute top-1 right-1 px-3 pt-0 pb-1 rounded-full text-4xl font-bold text-red-600 hover:text-red-500 active:text-red-700 active:scale-105'
-                      onClick={() => removeCartItem(item._id)}
+                      onClick={() => removeCartItem(item.id)}
                     >
                       x
                     </button>
                     <h3 className='absolute bottom-2 right-4 wordSpacingPrice text-4xl font-extrabold text-slate-800'>
-                      &euro; {item?.price}
+                      &euro; {item?.price.unit_amount}
                     </h3>
                   </div>
                 </>

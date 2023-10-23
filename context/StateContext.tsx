@@ -41,18 +41,18 @@ export function StateContextProvider({
     // Find the item in the cart
     const checkProductInCart = cartItems.find(
       // Check if the item's _id is the same as the product's _id
-      (item: ICartItem) => item._id === product._id
+      (item: ICartItem) => item.id === product.id
     )
 
     // Update the total price and total quantity of the cart
-    setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
+    setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price.unit_amount * quantity)
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity)
 
     // If the product is already in the cart
     if (checkProductInCart) {
       // Find the product in the cart and increase the quantity.
       const updatedCartItems = cartItems.map((cartProduct: ICartItem) => {
-        if (cartProduct._id === product._id)
+        if (cartProduct.id === product.id)
           return {
             ...cartProduct,
             quantity: cartProduct.quantity + quantity,
@@ -116,7 +116,7 @@ export function StateContextProvider({
 
   const updateCartItemQuantity = (id: string, value: string) => {
     //  find the index of the product in the cartItems array
-    const index = cartItems.findIndex((product) => product._id === id)
+    const index = cartItems.findIndex((product) => product.id === id)
 
     // create a new array to avoid mutating the original cartItems array
     const newCartItems = [...cartItems]
@@ -133,7 +133,7 @@ export function StateContextProvider({
       setCartItems(newCartItems)
 
       // update the total price and total quantity
-      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price.unit_amount)
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1)
 
       // if the value is 'dec', decrease the quantity by 1
@@ -146,7 +146,7 @@ export function StateContextProvider({
 
         newCartItems.splice(index, 1, foundProduct)
         setCartItems(newCartItems)
-        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price.unit_amount)
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
       }
     }
@@ -154,7 +154,7 @@ export function StateContextProvider({
 
   // remove cart item and update total price and total quantity
   const removeCartItem = (id: string) => {
-    const index = cartItems.findIndex((product) => product._id === id)
+    const index = cartItems.findIndex((product) => product.id === id)
 
     // copy the cart items to then use splice to remove the item (splice removes the original so we need to copy it first)
     const newCartItems = [...cartItems]
@@ -164,15 +164,19 @@ export function StateContextProvider({
     setCartItems(newCartItems)
     setTotalPrice(
       (prevTotalPrice) =>
-        prevTotalPrice - foundProduct.price * foundProduct.quantity
+        prevTotalPrice - foundProduct.price.unit_amount * foundProduct.quantity
     )
     setTotalQuantities(
       (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
     )
   }
 
+
   const incQty = () => {
-    setQty((prevQty) => prevQty + 1)
+    setQty((prevQty) => {
+      // If the quantity is 7 or mpre, return 1. Else, return the previous quantity + 1.
+      return prevQty >= 7 ? prevQty : prevQty + 1
+    })
   }
 
   const decQty = () => {

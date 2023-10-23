@@ -2,6 +2,9 @@ import { client } from '@/lib/client'
 import { ProductCard, HeroBanner } from '@/components'
 
 import { IProduct, IHeroBanner } from '@/types'
+import { stripe } from './api/stripe'
+import { getThisProduct } from './api/getThisProduct'
+import { getProducts } from './api/getProducts'
 
 interface IProps {
   products: IProduct[]
@@ -33,9 +36,10 @@ export default function Home({ products, heroBanner }: IProps) {
 // -< getStaticProps >-
 export const getStaticProps = async () => {
   // Fetch all products and banner in the Sanity dataset
-  const products = await client.fetch('*[_type == "product"]')
-  const heroBannerData = await client.fetch(`*[_type == "heroBanner"]`)
-  const heroBanner = heroBannerData.length > 0 ? heroBannerData[0] : null
+  const products = await getProducts();
+
+  const randomIndex = Math.floor(Math.random() * products.length);
+  const heroBanner = products[randomIndex];
 
   return {
     props: {
@@ -48,8 +52,10 @@ export const getStaticProps = async () => {
   }
 }
 
-// TIP: ***ISR (Incremental Static Regeneration) is a new feature in Next.js that allows you to update existing pages by re-rendering them in the background as traffic comes in.
+/* Used to be for the Sanity.io
 
-// It is needed with services like Sanity cause those services will not trigger a rebuild of the site when data is updated
+  //const products = await client.fetch('*[_type == "product"]')
+  //const heroBannerData = await client.fetch(`*[_type == "heroBanner"]`)
+  //const heroBanner = heroBannerData.length > 0 ? heroBannerData[0] : null
 
-// Revalidation will only happen if the page is visited (it will not impact resources when the page is not visited. With higher traffic you should consider higher revalidation times)
+*/

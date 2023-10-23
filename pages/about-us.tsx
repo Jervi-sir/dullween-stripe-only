@@ -1,9 +1,12 @@
+import { ToastContext } from '@/context/toastContext';
 import styles from '@/styles/AboutUsPage.module.scss'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useContext } from 'react';
 
 export default function AboutUsPage() {
+  const { showLoading } = useContext(ToastContext);
   return (
     <>
       <Head>
@@ -46,21 +49,12 @@ export default function AboutUsPage() {
             <div className='mb-7'>
               <h2 className='mb-4 text-5xl font-bold'>Contacts</h2>
               <p>
-                github:{' '}
-                <a
-                  className={`${styles.emailLink} mb-4 text-indigo-700 hover:underline`}
-                  href='https://github.com/emanuelefavero'
-                >
-                  emanuelefavero
-                </a>{' '}
-              </p>
-              <p>
                 email:{' '}
                 <a
                   className={`${styles.emailLink} mb-4 text-indigo-700 hover:underline`}
                   href='mailto:info@emanuelefavero.com'
                 >
-                  info@emanuelefavero.com
+                  info@dullween.com
                 </a>
               </p>
             </div>
@@ -69,11 +63,15 @@ export default function AboutUsPage() {
             id='successPageCard'
             className='tripleCardEffect bg-violet-300 border-2 border-black px:1 xs4:px-4 xs:px-4 py-4 flex flex-col justify-center items-center'
           >
-            <Link href='/'>
+            <Link 
+              href='/'
+              
+            >
               <button
                 className='
     text-sm xs4:text-2xl font-bold select-none text-white bg-indigo-500 py-1 px-2 xs4:px-10 rounded-lg uppercase border-indigo-700 border-2 hover:bg-slate-800 hover:border-black active:border-white active:scale-95 transition-all duration-100 ease-in-out
   '
+  onClick={showLoading}
               >
                 Continue Shopping
               </button>

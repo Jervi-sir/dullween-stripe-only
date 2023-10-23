@@ -1,3 +1,3 @@
-const appName = 'Pineapple'
+const appName = 'Jervi'
 
 export default appName

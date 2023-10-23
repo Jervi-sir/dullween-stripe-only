@@ -2,9 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { ICartItem } from '@/types'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string, {
+export const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string, {
   apiVersion: '2022-11-15',
 })
+
 
 // TIP: You can use 4242 4242 4242 4242 as a test card number with 424 as the CVC and any future date for the expiration date in the stripe checkout form for testing purposes
 // TIP: Remember to set stripe to test mode in the dashboard

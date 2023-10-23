@@ -2,10 +2,14 @@ import Link from 'next/link'
 import styles from '@/styles/HamburgerMenu.module.scss'
 import { CgClose } from 'react-icons/cg'
 import { useStateContext } from '@/context/StateContext'
+import categoryName from '@/utils/categoryNames'
+import { ToastContext } from '@/context/toastContext'
+import { useContext } from 'react';
 
 export default function HamburgerMenu() {
   const { setShowHamburgerMenu } = useStateContext()
-
+  const { showLoading } = useContext(ToastContext);
+   
   return (
     <>
       {/* Hamburger Menu Overlay */}
@@ -30,32 +34,32 @@ export default function HamburgerMenu() {
 
           {/* Hamburger Menu Items */}
           <ul className='px-1 xs3:px-7 flex flex-col justify-center items-center pt-10 mb-6 select-none'>
-            {/* TODO: Move to separate container where you only need to pass the menu item text and link url */}
-            <li className='mb-1'>
-              <Link
-                className={`${styles.hamburgerMenuLink} text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
-                href='/iphone'
-                onClick={() => setShowHamburgerMenu(false)}
-              >
-                iPhone
-              </Link>
-            </li>
-
-            <li className='mb-1'>
-              <Link
-                className={`${styles.hamburgerMenuLink} text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
-                href='/airpods'
-                onClick={() => setShowHamburgerMenu(false)}
-              >
-                AirPods
-              </Link>
-            </li>
+            
+            {
+              categoryName?.map((element) => (
+                <li className='mb-1'>
+                  <Link
+                    className={`${styles.hamburgerMenuLink} first-letter:uppercase text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
+                    href={`/category/${element}`}
+                    onClick={() => {
+                      setShowHamburgerMenu(false)
+                      showLoading()
+                    }}
+                  >
+                    {element}
+                  </Link>
+                </li>
+              ))
+            }
 
             <li className='mb-1'>
               <Link
                 className={`${styles.hamburgerMenuLink} text-black wordSpacingTight tracking-tight hover:no-underline active:scale-95`}
                 href='/about-us'
-                onClick={() => setShowHamburgerMenu(false)}
+                onClick={() => {
+                  setShowHamburgerMenu(false)
+                  showLoading()
+                }}
               >
                 About Us
               </Link>

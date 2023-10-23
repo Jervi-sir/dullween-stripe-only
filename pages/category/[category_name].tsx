@@ -1,10 +1,9 @@
 import Head from 'next/head'
-import { client } from '@/lib/client'
 import { ProductCard } from '@/components'
 
 import { IProduct } from '@/types'
-import { getProducts } from './api/getProducts'
-import { getByCategory } from './api/getByCategory'
+import { getByCategory } from '../api/getByCategory'
+import { GetStaticPaths } from 'next'
 
 interface IProps {
   products: IProduct[]
@@ -32,11 +31,17 @@ export default function iPhoneCategoryPage({ products }: IProps) {
   )
 }
 
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],  // No paths are pre-rendered at build time
+    fallback: 'blocking',  // Enable on-demand SSG
+  };
+};
+
 // -< getStaticProps >-
-export const getStaticProps = async () => {
-  // Fetch all products and banner in the Sanity dataset
-  // const products = await client.fetch('*[_type == "product"]')
-  const products = await getByCategory({ category_name: 'iphone' });
+export const getStaticProps = async ({ params }) => {
+  const { category_name } = params as { category_name: string }
+  const products = await getByCategory({ category_name: category_name });
 
   const randomIndex = Math.floor(Math.random() * products.length);
   const heroBanner = products[randomIndex];
