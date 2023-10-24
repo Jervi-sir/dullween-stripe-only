@@ -5,6 +5,7 @@ This repo is a clone of `Pineapple` made by the following developers, beautiful 
 I needed to clone it due to time tightness, and not to reinvinte the wheel
 
 > this Repo is tweaked to use Stripe only for payment and product management
+> this webapp gonna use Cloudinary for hosting extra images, 
 
 ## Credits to 
 
@@ -19,13 +20,13 @@ Repo made beautifully by
 ## How to run this project locally
 
 - run `npm install`
-- `cd sanity-ecommerce` folder and run `npm install` 
-- create a `.env.local` file in the root directory and add the following:
+- create a `.env` add the following:
 ```bash
 # STRIPE
 # @see https://dashboard.stripe.com/test/apikeys
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=''
 NEXT_PUBLIC_STRIPE_SECRET_KEY=''
+NEXT_PUBLIC_CLOUDINARY_URL=''
 ```
 
 ## How to deploy this project
@@ -36,7 +37,24 @@ NEXT_PUBLIC_STRIPE_SECRET_KEY=''
 ```bash
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 NEXT_PUBLIC_STRIPE_SECRET_KEY
+NEXT_PUBLIC_CLOUDINARY_URL
 ```
+
+## How to add products
+
+1. add in `Products` page, and make sure to fill these following inputs
+    - Metadata:
+      - amount: 10
+      - category: iphone, apple
+    - Feature list:
+      - just from cloudinary, don't take whole url but just the name of the image in that url 
+2. make sure the price is in EUR
+    - make it One Time
+3. after adding the product, go explore it from the dashboard,
+    - find `Create payment link`
+        - check the `Collect customers addresses`
+        - check the `Let customers adjust quantity`
+        - maybe check `Allow promotion codes`
 
 ## Resources
 
