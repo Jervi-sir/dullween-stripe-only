@@ -166,3 +166,12 @@ p {
     color-scheme: dark;
   }
 } */
+
+.zoom-container {
+  overflow: hidden;  /* Ensures that the image doesn't spill out of its container when zoomed */
+  transition: transform .3s;  /* Optional: smooth transition effect */
+}
+
+.zoom-container:hover > img {
+  transform: scale(1.2);  /* Adjust the scale as per your requirement */
+}

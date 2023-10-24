@@ -123,27 +123,29 @@ export function StateContextProvider({
 
     // if the value is 'inc', increase the quantity by 1
     if (value === 'inc') {
-      const foundProduct = {
-        ...newCartItems[index],
-        quantity: newCartItems[index].quantity + 1,
+      // Check if current quantity is less than 7
+      if (newCartItems[index].quantity < 7) {
+        const foundProduct = {
+          ...newCartItems[index],
+          quantity: newCartItems[index].quantity + 1, // Increase the quantity
+        }
+    
+        // replace the item at the same index with the new item
+        newCartItems.splice(index, 1, foundProduct)
+        setCartItems(newCartItems)
+    
+        // update the total price and total quantity
+        setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price.unit_amount)
+        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1)
       }
-
-      // replace the item at the same index with the new item
-      newCartItems.splice(index, 1, foundProduct)
-      setCartItems(newCartItems)
-
-      // update the total price and total quantity
-      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price.unit_amount)
-      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1)
-
-      // if the value is 'dec', decrease the quantity by 1
+      // else, if the value is 'dec', decrease the quantity by 1, but ensure it's greater than 1
     } else if (value === 'dec') {
       if (newCartItems[index].quantity > 1) {
         const foundProduct = {
           ...newCartItems[index],
-          quantity: newCartItems[index].quantity - 1,
+          quantity: newCartItems[index].quantity - 1, // Decrease the quantity
         }
-
+    
         newCartItems.splice(index, 1, foundProduct)
         setCartItems(newCartItems)
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price.unit_amount)

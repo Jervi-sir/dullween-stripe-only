@@ -6,6 +6,8 @@ import { toast } from 'react-hot-toast'
 import { AiFillShopping } from 'react-icons/ai'
 import { useStateContext } from '@/context/StateContext'
 import getStripe from '@/lib/getStripe'
+import PriceFormatter from './PriceFormatter'
+import PriceCurrency from './PriceCurrency'
 
 export default function Cart() {
   const {
@@ -204,8 +206,14 @@ export default function Cart() {
                     >
                       x
                     </button>
+                    <h6>
+                      {item.quantity} {' '} x {' '}
+                      {PriceCurrency({ currency_iso: item?.price.currency})}
+                      {PriceFormatter({ price: item?.price.unit_amount})}
+                    </h6>
                     <h3 className='absolute bottom-2 right-4 wordSpacingPrice text-4xl font-extrabold text-slate-800'>
-                      &euro; {item?.price.unit_amount}
+                      {PriceCurrency({ currency_iso: item?.price.currency})}
+                      {PriceFormatter({ price: (item?.price.unit_amount)*(item.quantity)})}
                     </h3>
                   </div>
                 </>
@@ -221,7 +229,8 @@ export default function Cart() {
                     Total
                   </h3>
                   <h3 className='text-3xl font-extrabold wordSpacingTight tracking-tight leading-8 mb-1'>
-                    &euro; {totalPrice}
+                    {PriceCurrency({ currency_iso: 'eur'})}
+                    {PriceFormatter({ price: totalPrice})}
                   </h3>
                 </div>
 

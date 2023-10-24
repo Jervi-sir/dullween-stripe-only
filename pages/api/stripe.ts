@@ -17,7 +17,7 @@ export default async function handler(
         submit_type: 'pay',
         mode: 'payment',
         payment_method_types: ['card'],
-        billing_address_collection: 'auto',
+        billing_address_collection: 'required',
 
         // Shipping options - create them in the Stripe dashboard and copy the IDs here
         // @link https://dashboard.stripe.com/test/shipping-rates
@@ -31,7 +31,7 @@ export default async function handler(
 
           return {
             price_data: {
-              currency: 'eur',
+              currency: item.price.currency,
               product_data: {
                 name: item.name,
                 images: [img],

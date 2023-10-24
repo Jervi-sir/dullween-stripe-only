@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { IHeroBanner } from '@/types'
 import { useContext } from 'react';
 import { ToastContext } from '@/context/toastContext';
+import PriceFormatter from './PriceFormatter';
+import PriceCurrency from './PriceCurrency';
 
 interface IProps {
   heroBanner: IHeroBanner
@@ -42,7 +44,9 @@ export default function HeroBanner({ heroBanner }: IProps) {
                   {true ? (
                     // If discounted, show discount price and original price with strikethrough
                     <>
-                      &euro; {price.unit_amount}{' '}
+                      {/* &euro;  price.unit_amount */}
+                      {PriceCurrency({ currency_iso: price.currency})}
+                      {PriceFormatter({ price: price.unit_amount})} {' '}
                       <span className='line-through text-red-800 text-xl xs3:text-3xl font-extrabold relative -top-4 -left-1 xs3:-top-9 select-none'>
                         {}
                       </span>

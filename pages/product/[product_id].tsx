@@ -4,10 +4,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { ProductCard } from '@/components'
 import { useStateContext } from '@/context/StateContext'
+import Zoom from 'react-medium-image-zoom'
+import ImageZoom from "react-image-zooom";
 
 import { IProduct } from '@/types'
 import { getThisProduct } from '../api/getThisProduct'
 import { getProducts } from '../api/getProducts'
+import PriceFormatter from '@/components/PriceFormatter'
+import PriceCurrency from '@/components/PriceCurrency';
+import { ImageMagnify } from '@/components/ImageMagnify'
+import { ImageCover } from '@/components/ImageCover'
 
 interface IProps {
   product: IProduct
@@ -21,7 +27,6 @@ export default function ProductDetailPage({ product, products }: IProps) {
   const handleBuyNow = () => {
 
     onAdd(product, qty)
-
     setShowCart(true)
   }
 
@@ -32,19 +37,16 @@ export default function ProductDetailPage({ product, products }: IProps) {
       </Head>
       <section className='bg-white flex items-center border-black border-b-2 flex-col sm:flex-row'>
         {/* PRODUCT IMAGE */}
-        <div className='bg-white w-full h-80 sm:h-96 py-10 sm:w-1/2 flex items-center justify-center'>
-          <Image
-            className='object-contain max-h-full max-w-full select-none'
-            src={product.images[0]}
+        <div className='bg-white w-full h-80 sm:h-96 py-10 sm:w-1/2 flex items-center justify-center zoom-container'> 
+          <ImageCover
+            image_src={product.allImages[index]}
             alt={product.name}
-            width={600}
-            height={600}
           />
         </div>
 
         {/* PRODUCT SELECTABLE IMAGES */}
         <nav className='w-full flex justify-end items-center h-16 sm:h-full sm:w-16 mb-3 overflow-hidden sm:flex-col gap-2 px-4'>
-          {product.images?.map((item, i) => (
+          {product.allImages?.map((item, i) => (
             <div
               key={i}
               className={`rounded-md ${
@@ -57,7 +59,10 @@ export default function ProductDetailPage({ product, products }: IProps) {
                 src={item}
                 className={`h-16 sm:h-16 sm:w-20 object-contain select-none`}
                 // select image on mouse enter (hover state on desktop, click on mobile)
-                onMouseEnter={() => setIndex(i)}
+                onMouseEnter={() => {
+                  setIndex(i)
+                  console.log(i)
+                }}
                 alt={`${i} ${product.name}`}
               />
             </div>
@@ -72,12 +77,12 @@ export default function ProductDetailPage({ product, products }: IProps) {
             </h1>
             <p className='text-lg font-normal'>{product.description}</p>
             <p className='wordSpacingTight tracking-tight text-4xl font-extrabold mb-4'>
-              <span className='mr-2'>&euro;</span>
-              {product.price.unit_amount}
+              {PriceCurrency({ currency_iso: product.price.currency})}
+              {PriceFormatter({ price: product.price.unit_amount})}
             </p>
 
             {/* Product Quantity */}
-            <nav className='flex flex-col xs3:flex-row justify-start items-center mb-5'>
+            <nav className='flex flex-col xs3:flex-row justify-start items-center mb-2'>
               <p className='text-md font-semibold select-none mr-3 mb-3 xs3:mb-0'>
                 Quantity:
               </p>
@@ -97,6 +102,18 @@ export default function ProductDetailPage({ product, products }: IProps) {
                 >
                   +
                 </button>
+              </div>
+            </nav>
+
+            <nav className='flex flex-col xs3:flex-row justify-start items-center mb-5'>
+              <p className='text-md font-semibold select-none mr-3 mb-3 xs3:mb-0'>
+                Total:
+              </p>
+              <div className='flex flex-col xs5:flex-row'>
+                <span className='wordSpacingTight tracking-tight text-lg font-extrabold'>
+                  {PriceCurrency({ currency_iso: product.price.currency })}
+                  {PriceFormatter({ price: (product.price.unit_amount) * (qty) })}
+                </span>
               </div>
             </nav>
 
@@ -174,7 +191,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const product = await getThisProduct({ product_id: product_id })
   const products = await getProducts()
-
+  console.log(product)
   return {
     props: {
       product,

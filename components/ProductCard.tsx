@@ -6,6 +6,8 @@ import { useStateContext } from '@/context/StateContext'
 import { IProduct } from '@/types'
 import { useContext } from 'react';
 import { ToastContext } from '@/context/toastContext'
+import PriceFormatter from './PriceFormatter'
+import PriceCurrency from './PriceCurrency';
 
 interface IProps {
   product: IProduct
@@ -43,8 +45,9 @@ export default function ProductCard({ product }: IProps) {
               <p>{product.description}</p>
             </div>
             <p className='wordSpacingTight tracking-tight text-4xl font-extrabold'>
-              <span className='mr-2'>&euro;</span>
-              {product.price.unit_amount}
+              {/*<span className='mr-2'>&euro;</span>  price.unit_amount */}
+              {PriceCurrency({ currency_iso: product.price.currency})}
+              {PriceFormatter({ price: product.price.unit_amount})} {' '}
             </p>
           </div>
         </div>

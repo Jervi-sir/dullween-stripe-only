@@ -23,7 +23,8 @@ export interface IProduct {
     unit_amount: number,
     unit_amount_decimal: string,
     currency: string
-  }
+  },
+  allImages
 }
 
 // NOTE: this is the same as IProduct but with quantity
