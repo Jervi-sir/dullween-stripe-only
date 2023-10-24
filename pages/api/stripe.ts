@@ -21,10 +21,10 @@ export default async function handler(
 
         // Shipping options - create them in the Stripe dashboard and copy the IDs here
         // @link https://dashboard.stripe.com/test/shipping-rates
-        shipping_options: [
+        //shipping_options: [
           // FREE SHIPPING
-          { shipping_rate: process.env.NEXT_PUBLIC_STRIPE_FREE_SHIPPING_RATE },
-        ],
+          //{ shipping_rate: process.env.NEXT_PUBLIC_STRIPE_FREE_SHIPPING_RATE },
+        //],
 
         line_items: req.body.map((item: ICartItem) => {
           const img = item.images[0]
