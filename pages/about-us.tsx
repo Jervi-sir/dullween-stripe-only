@@ -38,10 +38,10 @@ export default function AboutUsPage() {
             <p className='mb-7 text-white'>
               Since our inception in 2022,
               <br />
-              we've grown from a small, local operation to a booming online hub.
+              we&apos;ve grown from a small, local operation to a booming online hub.
             </p>
             <p className='mb-7 text-white'>
-              Our passion for excellence and commitment to the community has allowed us to become the go-to destination for everyone's Halloween needs.
+              Our passion for excellence and commitment to the community has allowed us to become the go-to destination for everyone&apos;s Halloween needs.
             </p>
             <div className='mb-7 text-white'>
               <h2 className='mb-4 text-5xl font-bold text-yellow-300'>Contacts</h2>

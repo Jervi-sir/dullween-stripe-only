@@ -33,13 +33,13 @@ export const TermsConditions = () => {
                     <p className="mb-4">
                       Welcome to DullWeen!
                       <br />
-                        These terms and conditions outline the rules and regulations for the use of DullWeen's Website.
+                        These terms and conditions outline the rules and regulations for the use of DullWeen&apos;s Website.
                         <br />
                           By accessing this website, we assume you accept these terms and conditions. Do not continue to use DullWeen if you do not agree to take all of the terms and conditions stated on this page.
                         </p>
                         <h3 className="text-xl font-semibold mb-2">Cookies</h3>
                         <p className="mb-4">
-                          We employ the use of cookies. By accessing DullWeen, you agreed to use cookies in agreement with DullWeen's Privacy Policy.
+                          We employ the use of cookies. By accessing DullWeen, you agreed to use cookies in agreement with DullWeen&apos;s Privacy Policy.
                         </p>
                         <h3 className="text-xl font-semibold mb-2">License</h3>
                         <p className="mb-4">
