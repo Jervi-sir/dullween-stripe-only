@@ -1,5 +1,6 @@
 "use client"
 
+import appName from "@/utils/appName";
 import { useState } from "react"
 
 export const Delivery = () => {
@@ -30,7 +31,7 @@ export const Delivery = () => {
                   <div id="content" className="mx-auto">
                     <h1 className="text-2xl font-bold mb-4">Delivery</h1>
                       <p className="mb-4">
-                        At DullWeen, we’re committed to delivering your Halloween essentials in a timely and efficient manner.
+                        At {appName}, we’re committed to delivering your Halloween essentials in a timely and efficient manner.
                         <br /> 
                         We understand the importance of fast, reliable delivery to ensure your items arrive ready for the season.
                       </p>

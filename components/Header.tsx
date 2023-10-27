@@ -9,6 +9,7 @@ import categoryName from '@/utils/categoryNames'
 import { ToastContext } from '@/context/toastContext'
 import { useContext } from 'react';
 import { useRouter } from 'next/router'
+import appName from '@/utils/appName'
 
 export default function Header() {
   const {
@@ -42,7 +43,7 @@ export default function Header() {
                 onClick={showLoading}
               />
               <span style={{fontWeight: 'bold', fontSize: '15px'}}>
-                DullWeen
+                {appName}
               </span>
             </Link>
 

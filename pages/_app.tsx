@@ -50,10 +50,10 @@ export default function App({ Component, pageProps }: AppProps) {
             style={{ position: 'relative', overflow: 'hidden' }}
           >
             <div className="top-banner">
-              <Image src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364673/DullWeen/yffjfdhijlg7easltusc.png" alt="" style={{height: '200%'}} />
-              <Image src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364661/DullWeen/xakfdiwsaddm423topcc.png" alt="" style={{height: '100%'}} />
+              <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364673/DullWeen/yffjfdhijlg7easltusc.png" alt="" style={{height: '200%'}} />
+              <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364661/DullWeen/xakfdiwsaddm423topcc.png" alt="" style={{height: '100%'}} />
             </div>
-            <h2 style={{color: 'transparent'}}>DullWeen</h2>
+            <h2 style={{color: 'transparent'}}>{appName}</h2>
             <div style={{position: 'absolute', width: '100%', top: '31%'}}>
               <h1 className="text-center text-sm xs5:text-sm xs4:text-sm xs3:text-base xs2:text-lg xs2:pb-4 xs:text-3xl sm:text-3xl md:text-4xl">
                 Bring Joy to your Home

@@ -2,6 +2,7 @@ import { Delivery } from '@/components/Delivery';
 import { TermsConditions } from '@/components/TermsConditions';
 import { ToastContext } from '@/context/toastContext';
 import styles from '@/styles/AboutUsPage.module.scss'
+import { instagram, tiktok } from '@/utils/socials';
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -53,7 +54,7 @@ export default function AboutUsPage() {
                   className={`${styles.emailLink} mb-4 text-yellow-300 hover:underline`}
                   href='mailto:info@emanuelefavero.com'
                 >
-                  info@dullween.com
+                  {instagram}
                 </a>
               </p>
               <p>
@@ -64,7 +65,7 @@ export default function AboutUsPage() {
                   className={`${styles.emailLink} mb-4 text-yellow-300 hover:underline`}
                   href='mailto:info@emanuelefavero.com'
                 >
-                  info@dullween.com
+                  {tiktok}
                 </a>
               </p>
             </div>

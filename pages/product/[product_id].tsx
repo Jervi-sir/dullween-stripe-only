@@ -162,7 +162,7 @@ export default function ProductDetailPage({ product, products }: IProps) {
             className={`bg-white text-black rounded-lg w-full xs3:w-72 h-64 px-4 xs3:px-8 py-3 xs3:py-6 flex flex-col justify-center relative active:top-[0.1rem]`}
             style={{marginLeft: '0em'}}
           >
-          <Image src="https://media.tenor.com/KIc7Bbbx7rIAAAAC/santa-claus-sneeking.gif" alt="" style={{height: '100%', width: '100%'}} />
+          <img src="https://media.tenor.com/KIc7Bbbx7rIAAAAC/santa-claus-sneeking.gif" alt="" style={{height: '100%', width: '100%'}} />
           </div>
         </section>
       </div>

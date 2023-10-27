@@ -4,6 +4,7 @@ import { ProductCard } from '@/components'
 import { IProduct } from '@/types'
 import { getByCategory } from '../api/getByCategory'
 import { GetStaticPaths } from 'next'
+import appName from '@/utils/appName'
 
 interface IProps {
   products: IProduct[]
@@ -14,7 +15,7 @@ export default function iPhoneCategoryPage({ products, category_name }: IProps) 
   return (
     <>
       <Head>
-        <title>DullWeen products</title>
+        <title>{appName} products</title>
       </Head>
       {/* PRODUCTS */}
       {/* TODO: Then valuate if it should be moved to own Component */}

@@ -1,5 +1,6 @@
 "use client"
 
+import appName from "@/utils/appName";
 import { useState } from "react"
 
 export const TermsConditions = () => {
@@ -31,36 +32,36 @@ export const TermsConditions = () => {
                   <div id="content" className="mx-auto">
                     <h1 className="text-2xl font-bold mb-4">Terms &amp; Conditions</h1>
                     <p className="mb-4">
-                      Welcome to DullWeen!
+                      Welcome to {appName}!
                       <br />
-                        These terms and conditions outline the rules and regulations for the use of DullWeen&apos;s Website.
+                        These terms and conditions outline the rules and regulations for the use of {appName}&apos;s Website.
                         <br />
-                          By accessing this website, we assume you accept these terms and conditions. Do not continue to use DullWeen if you do not agree to take all of the terms and conditions stated on this page.
+                          By accessing this website, we assume you accept these terms and conditions. Do not continue to use {appName} if you do not agree to take all of the terms and conditions stated on this page.
                         </p>
                         <h3 className="text-xl font-semibold mb-2">Cookies</h3>
                         <p className="mb-4">
-                          We employ the use of cookies. By accessing DullWeen, you agreed to use cookies in agreement with DullWeen&apos;s Privacy Policy.
+                          We employ the use of cookies. By accessing {appName}, you agreed to use cookies in agreement with {appName}&apos;s Privacy Policy.
                         </p>
                         <h3 className="text-xl font-semibold mb-2">License</h3>
                         <p className="mb-4">
-                          Unless otherwise stated, DullWeen and/or its licensors own the intellectual property rights for all material on DullWeen. All intellectual property rights are reserved.
+                          Unless otherwise stated, {appName} and/or its licensors own the intellectual property rights for all material on {appName}. All intellectual property rights are reserved.
                         </p>
                         <h3 className="text-xl font-semibold mb-2">You must not:</h3>
                         <ul className="list-disc pl-5 mb-4">
-                          <li>Republish material from DullWeen</li>
-                          <li>Sell, rent, or sub-license material from DullWeen</li>
-                          <li>Reproduce, duplicate, or copy material from DullWeen</li>
-                          <li>Redistribute content from DullWeen</li>
+                          <li>Republish material from {appName}</li>
+                          <li>Sell, rent, or sub-license material from {appName}</li>
+                          <li>Reproduce, duplicate, or copy material from {appName}</li>
+                          <li>Redistribute content from {appName}</li>
                         </ul>
                         <h3 className="text-xl font-semibold mb-2">User Comments</h3>
                         <p className="mb-4">
                           This Agreement shall begin on the date hereof.
                           <br />
-                            Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. DullWeen does not filter, edit, publish, or review comments prior to their presence on the website. Comments do not reflect the views and opinions of DullWeen, its agents, and/or affiliates. Comments reflect the views and opinions of the person who posts their views and opinions. To the extent permitted by applicable laws, DullWeen shall not be liable for the comments or for any liability, damages, or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the comments on this website.
+                            Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. {appName} does not filter, edit, publish, or review comments prior to their presence on the website. Comments do not reflect the views and opinions of {appName}, its agents, and/or affiliates. Comments reflect the views and opinions of the person who posts their views and opinions. To the extent permitted by applicable laws, {appName} shall not be liable for the comments or for any liability, damages, or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the comments on this website.
                         </p>
                         <h3 className="text-xl font-semibold mb-2">Purchasing and Delivery</h3>
                         <p className="mb-4">
-                          DullWeen reserves the rights to accept or deny any order placed by a customer for any reason. Prices for goods are subject to change without notice. We reserve the right at any time to modify or discontinue the product (or any part or content thereof) without notice.
+                          {appName} reserves the rights to accept or deny any order placed by a customer for any reason. Prices for goods are subject to change without notice. We reserve the right at any time to modify or discontinue the product (or any part or content thereof) without notice.
                           <br />
                             We shall not be liable to any customer or to any third-party for any modification, price change, suspension, or discontinuance of the product.
                         </p>
@@ -70,11 +71,11 @@ export const TermsConditions = () => {
                         </p>
                         <h3 className="text-xl font-semibold mb-2">Limitation of Liability</h3>
                         <p className="mb-4">
-                          In no event shall DullWeen, nor any of its officers, directors, and employees be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract. DullWeen, including its officers, directors, and employees shall not be held liable for any indirect, consequential, or special liability arising out of or in any way related to your use of this Website.
+                          In no event shall {appName}, nor any of its officers, directors, and employees be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract. {appName}, including its officers, directors, and employees shall not be held liable for any indirect, consequential, or special liability arising out of or in any way related to your use of this Website.
                         </p>
                         <h3 className="text-xl font-semibold mb-2">Indemnification</h3>
                         <p className="mb-4">
-                          You hereby indemnify to the fullest extent DullWeen from and against any and/or all liabilities, costs, demands, causes of action, damages, and expenses arising in any way related to your breach of any of the provisions of these Terms.
+                          You hereby indemnify to the fullest extent {appName} from and against any and/or all liabilities, costs, demands, causes of action, damages, and expenses arising in any way related to your breach of any of the provisions of these Terms.
                         </p>
                         <h3 className="text-xl font-semibold mb-2">Severability</h3>
                         <p className="mb-4">
@@ -82,7 +83,7 @@ export const TermsConditions = () => {
                         </p>
                         <h3 className="text-xl font-semibold mb-2">Variation of Terms</h3>
                         <p className="mb-4">
-                          DullWeen is permitted to revise these Terms at any time as it sees fit, and by using this Website, you are expected to review these Terms on a regular basis.
+                          {appName} is permitted to revise these Terms at any time as it sees fit, and by using this Website, you are expected to review these Terms on a regular basis.
                         </p>
                       </div>
                   </div>

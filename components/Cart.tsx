@@ -30,6 +30,7 @@ export default function Cart() {
             paddingTop: '0.4rem',
             paddingBottom: '0.4rem',
             cursor: 'pointer',
+            color: 'white'
           }}
           // dismiss toast on click
           onClick={() => toast.dismiss(t.id)}
@@ -125,7 +126,7 @@ export default function Cart() {
               ({totalQuantities} items)
             </span>
             <div style={{ position: 'absolute',  top: 0, left: 0, zIndex: -1 }}>
-              <Image alt="" src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364660/DullWeen/jbf5ixjux3ezlsgoj3hv.png" />
+              <img alt="" src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364660/DullWeen/jbf5ixjux3ezlsgoj3hv.png" />
             </div>
           </nav>
 
@@ -261,8 +262,8 @@ export default function Cart() {
           </div>
 
           <div style={{ position: 'absolute', zIndex: '0', bottom: 0, width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'end'}}>
-            <Image src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364679/DullWeen/uyq1h4ykblepb4qqygri.png" alt="" style={{transform: 'scaleX(-1)', height: '169px'}}/>
-            <Image src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364666/DullWeen/keoupxnmeqbvn5aiylgz.png" alt="" style={{ width: '49%'}}/>
+            <img src="https://res.cloudinary.com/dbnslnawc/img/upload/v1698364679/DullWeen/uyq1h4ykblepb4qqygri.png" alt="" style={{transform: 'scaleX(-1)', height: '169px'}}/>
+            <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364666/DullWeen/keoupxnmeqbvn5aiylgz.png" alt="" style={{ width: '49%'}}/>
           </div>
         </div>
       </section>

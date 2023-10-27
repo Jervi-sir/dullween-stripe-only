@@ -28,7 +28,7 @@ export const ImageCover = ({ image_src, alt }) => {
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center z-50"
           onClick={handleCloseClick}
         >
-          <Image
+          <img
             className="object-contain max-h-screen max-w-screen select-none cursor-pointer"
             src={image_src}
             alt={alt}
