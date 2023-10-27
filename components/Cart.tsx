@@ -1,13 +1,13 @@
 import styles from '@/styles/Cart.module.scss'
 import { useRef } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { toast } from 'react-hot-toast'
 import { AiFillShopping } from 'react-icons/ai'
 import { useStateContext } from '@/context/StateContext'
 import getStripe from '@/lib/getStripe'
 import PriceFormatter from './PriceFormatter'
 import PriceCurrency from './PriceCurrency'
+import Image from 'next/image'
 
 export default function Cart() {
   const {
@@ -125,7 +125,7 @@ export default function Cart() {
               ({totalQuantities} items)
             </span>
             <div style={{ position: 'absolute',  top: 0, left: 0, zIndex: -1 }}>
-              <img src='https://res.cloudinary.com/dbnslnawc/image/upload/v1698364660/DullWeen/jbf5ixjux3ezlsgoj3hv.png' />
+              <Image alt="" src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364660/DullWeen/jbf5ixjux3ezlsgoj3hv.png" />
             </div>
           </nav>
 
@@ -261,8 +261,8 @@ export default function Cart() {
           </div>
 
           <div style={{ position: 'absolute', zIndex: '0', bottom: 0, width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'end'}}>
-            <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364679/DullWeen/uyq1h4ykblepb4qqygri.png" alt="" style={{transform: 'scaleX(-1)', height: '169px'}}/>
-            <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364666/DullWeen/keoupxnmeqbvn5aiylgz.png" alt="" style={{ width: '49%'}}/>
+            <Image src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364679/DullWeen/uyq1h4ykblepb4qqygri.png" alt="" style={{transform: 'scaleX(-1)', height: '169px'}}/>
+            <Image src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364666/DullWeen/keoupxnmeqbvn5aiylgz.png" alt="" style={{ width: '49%'}}/>
           </div>
         </div>
       </section>

@@ -9,6 +9,7 @@ import { Inconsolata } from 'next/font/google'
 import { Unbounded } from 'next/font/google'
 import { ToastProvider } from '@/context/toastContext'
 import {useRouter} from 'next/router'; 
+import Image from 'next/image'
 
 const unbounded = Unbounded({ subsets: ['latin'] })
 const inconsolata = Inconsolata({ subsets: ['latin'] })
@@ -49,8 +50,8 @@ export default function App({ Component, pageProps }: AppProps) {
             style={{ position: 'relative', overflow: 'hidden' }}
           >
             <div className="top-banner">
-              <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364673/DullWeen/yffjfdhijlg7easltusc.png" alt="" style={{height: '200%'}} />
-              <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364661/DullWeen/xakfdiwsaddm423topcc.png" alt="" style={{height: '100%'}} />
+              <Image src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364673/DullWeen/yffjfdhijlg7easltusc.png" alt="" style={{height: '200%'}} />
+              <Image src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364661/DullWeen/xakfdiwsaddm423topcc.png" alt="" style={{height: '100%'}} />
             </div>
             <h2 style={{color: 'transparent'}}>DullWeen</h2>
             <div style={{position: 'absolute', width: '100%', top: '31%'}}>

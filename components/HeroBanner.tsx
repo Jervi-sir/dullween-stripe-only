@@ -97,7 +97,7 @@ export default function HeroBanner({ heroBanner }: IProps) {
               className='w-full bg-yellow-300 text-lg font-extrabold px-4 text-center border-yellow-400 border-b-4 select-none'
               autoFill
             >
-              <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364896/DullWeen/dk6kn0nddn2iboxt4zsc.png" style={{ height: '29px' }} />
+              <Image src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364896/DullWeen/dk6kn0nddn2iboxt4zsc.png" alt="" style={{ height: '29px' }} />
             </Marquee>
           )}
         </section>

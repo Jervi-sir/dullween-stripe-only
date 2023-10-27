@@ -37,6 +37,7 @@ export default function AboutUsPage() {
             </p>
             <p className='mb-7 text-white'>
               Since our inception in 2022,
+              <br />
               we've grown from a small, local operation to a booming online hub.
             </p>
             <p className='mb-7 text-white'>
