@@ -4,11 +4,9 @@ import Link from 'next/link'
 // import { IoBagCheckSharp } from 'react-icons/io5'
 import { MdCancel } from 'react-icons/md'
 import Image from 'next/image'
-import { ToastContext } from '@/context/toastContext'
-import { useContext } from 'react';
+import { ContinueShoping } from '@/components/ContinueShoping'
 
 export default function canceled() {
-  const { showLoading } = useContext(ToastContext);
 
   return (
     <>
@@ -32,14 +30,8 @@ export default function canceled() {
           <h1 className='text-sm xs4:text-4xl font-extrabold text-center wordSpacingTight tracking-tight mb-1 select-none text-yellow-500 bg-red-500 px-2'>
             Your order has been canceled
           </h1>
-          <Link href='/'>
-            <button
-              className='mt-5 text-sm xs4:text-2xl font-bold select-none text-white bg-red-500 py-1 px-2 xs4:px-10 rounded-lg uppercase border-red-700 border-2 hover:bg-red-900 hover:border-black active:border-white active:scale-95 transition-all duration-100 ease-in-out'
-              onClick={showLoading}
-            >
-              Continue Shopping
-            </button>
-          </Link>
+          <ContinueShoping />
+
         </div>
       </div>
     </>

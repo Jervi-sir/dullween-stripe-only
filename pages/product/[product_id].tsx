@@ -61,7 +61,6 @@ export default function ProductDetailPage({ product, products }: IProps) {
                 // select image on mouse enter (hover state on desktop, click on mobile)
                 onMouseEnter={() => {
                   setIndex(i)
-                  console.log(i)
                 }}
                 alt={`${i} ${product.name}`}
               />
@@ -197,7 +196,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const product = await getThisProduct({ product_id: product_id })
   const products = await getProducts()
-  console.log(product)
   return {
     props: {
       product,

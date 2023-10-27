@@ -6,12 +6,10 @@ import { IoBagCheckSharp } from 'react-icons/io5'
 import { runConfetti } from '@/lib/confetti'
 import { useStateContext } from '@/context/StateContext'
 import Image from 'next/image'
-import { useContext } from 'react';
-import { ToastContext } from '@/context/toastContext'
+import { ContinueShoping } from '@/components/ContinueShoping'
 
 export default function SuccessPage() {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext()
-  const { showLoading } = useContext(ToastContext);
 
   useEffect(() => {
     // * RESET CART
@@ -49,15 +47,8 @@ export default function SuccessPage() {
           <p className='text-sm xs4:text-xl font-bold text-center wordSpacingTight tracking-tight mb-12 select-none text-yellow-500 bg-red-500 px-2'>
             Check your email for the receipt
           </p>
-
-          <Link href='/'>
-            <button
-              className='text-sm xs4:text-2xl font-bold select-none text-white bg-red-500 py-1 px-2 xs4:px-10 rounded-lg uppercase border-red-700 border-2 hover:bg-red-900 hover:border-black active:border-white active:scale-95 transition-all duration-100 ease-in-out'
-              onClick={showLoading}
-            >
-              Continue Shopping
-            </button>
-          </Link>
+          <ContinueShoping />
+          
         </div>
       </div>
     </>
