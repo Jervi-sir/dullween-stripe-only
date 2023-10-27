@@ -3,10 +3,14 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <>
-      {/* 3 lines */}
-      <div className='border-black border-t-2 bg-indigo-300 w-full h-3'></div>
-      <div className='bg-indigo-400 w-full h-3'></div>
-      <div className='border-slate-700 border-b-2 bg-fuchsia-400 w-full h-3'></div>
+      {/* 3 lines 
+      bg-indigo-300
+      bg-indigo-200
+      bg-fuchsia-400
+      */}
+      <div className='border-slate-700 border-b-2 bg-gray-100 w-full h-3'></div>
+      <div className='border-black border-t-2 bg-red-700  w-full h-3'></div>
+      <div className='bg-yellow-500 w-full h-3'></div>
 
       {/* Black Footer */}
       <div className='bg-black text-white py-12'>

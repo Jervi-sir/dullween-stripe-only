@@ -49,11 +49,13 @@ export default function Cart() {
           border: '1px solid #000',
           paddingLeft: '1rem',
           color: '#000',
-          backgroundColor: '#eef2ff',
+          //backgroundColor: '#eef2ff',
+          backgroundColor: '#97171d',
           userSelect: 'none',
         },
         iconTheme: {
-          primary: '#6366f1',
+          //primary: '#6366f1',
+          primary: '#008000',
           secondary: '#eef2ff',
         },
       }
@@ -102,9 +104,14 @@ export default function Cart() {
         ref={cartRef}
       >
         {/* Cart */}
-        <div className='w-full xs2:w-10/12 sm:w-[37.5rem] h-full bg-indigo-200 float-right relative border-l-2 border-black overflow-y-scroll'>
+        <div className='w-full xs2:w-10/12 sm:w-[37.5rem] h-full bg-red-200 float-right relative border-l-2 border-black overflow-y-scroll'
+          style={{backgroundImage: 'url("https://res.cloudinary.com/dbnslnawc/image/upload/v1698364669/DullWeen/kgqxl6qkwdfludgwlx7l.png")', position: 'relative'}}
+        >
+          
           {/* Cart Header */}
-          <nav className='w-full bg-white px-4 py-4 border-b-2 border-black select-none flex flex-col xs4:flex-row justify-start items-center'>
+          <nav className='w-full bg-white px-4 py-4 border-b-2 border-black select-none flex flex-col xs4:flex-row justify-start items-center'
+            style={{position: 'relative', zIndex: '99', }}
+          >
             <button
               className={`${styles.closeCartButton} text-3xl font-bold tracking-tight mb-2 xs4:mb-0 xs4:mr-2`}
               onClick={() => setShowCart(false)}
@@ -114,28 +121,33 @@ export default function Cart() {
               </span>{' '}
               Cart
             </button>
-            <span className='text-indigo-600 text-2xl font-bold tracking-tight relative -top-2'>
+            <span className='text-red-600 text-2xl font-bold tracking-tight relative -top-2'>
               ({totalQuantities} items)
             </span>
+            <div style={{ position: 'absolute',  top: 0, left: 0, zIndex: -1 }}>
+              <img src='https://res.cloudinary.com/dbnslnawc/image/upload/v1698364660/DullWeen/jbf5ixjux3ezlsgoj3hv.png' />
+            </div>
           </nav>
 
           {/* Cart Body */}
-          <div className='px-3 xs:px-6 py-20'>
+          <div className='px-3 xs:px-6 py-20'
+            style={{position: 'relative', zIndex: '99'}}
+          >
             {/* EMPTY CART */}
             {cartItems.length < 1 && (
               <div className='w-full flex flex-col justify-center items-center mb-20'>
                 <AiFillShopping
                   size={133}
-                  className='mb-2 text-slate-500 opacity-30'
+                  className='mb-2 text-red-500 opacity-80'
                 />
-                <h3 className='text-xl font-extrabold wordSpacing tracking-tight select-none mb-1 text-slate-800'>
+                <h3 className='text-xl font-extrabold wordSpacing tracking-tight select-none mb-1 text-red-800'>
                   Your shopping bag is empty
                 </h3>
                 <Link href='/'>
                   <button
                     type='button'
                     onClick={() => setShowCart(false)}
-                    className='mt-8 text-3xl font-bold select-none text-white bg-indigo-500 py-1 px-20 rounded-lg uppercase border-indigo-700 border-2 hover:bg-slate-800 hover:border-black active:border-white active:scale-95 transition-all duration-100 ease-in-out'
+                    className='mt-8 text-3xl font-bold select-none text-white bg-red-500 py-1 px-20 rounded-lg uppercase border-red-700 border-2 hover:bg-red-800 hover:border-black active:border-white active:scale-95 transition-all duration-100 ease-in-out'
                   >
                     Continue Shopping
                   </button>
@@ -221,14 +233,15 @@ export default function Cart() {
 
             {cartItems.length >= 1 && (
               <>
-                {/* Cart Total */}
-                <div className='w-full flex flex-col xs4:flex-row justify-between items-center mt-16 px-5'>
+                {/* Cart Total  w-full flex flex-col xs4:flex-row justify-between items-center mt-16 px-5 */}
+                
+                <div className='Cart_cartCard__C6vqJ relative bg-white text-black rounded-lg w-full px-4 py-10 xs4:py-3 flex justify-between items-center mb-8'>
                   <h3
-                    className={`${styles.total} text-slate-800 text-3xl font-extrabold wordSpacingTight tracking-tight leading-8 mb-4 xs:4mb-1 mr-4`}
+                    className={`${styles.total} text-slate-800 text-3xl font-extrabold wordSpacingTight tracking-tight leading-8`}
                   >
                     Total
                   </h3>
-                  <h3 className='text-3xl font-extrabold wordSpacingTight tracking-tight leading-8 mb-1'>
+                  <h3 className='text-3xl font-extrabold wordSpacingTight tracking-tight leading-8'>
                     {PriceCurrency({ currency_iso: 'eur'})}
                     {PriceFormatter({ price: totalPrice})}
                   </h3>
@@ -237,7 +250,7 @@ export default function Cart() {
                 {/* Buy Button */}
                 <div className='w-full flex justify-center items-center'>
                   <button
-                    className='mt-8 mb-2 text-3xl font-bold select-none text-white bg-indigo-500 py-1 px-20 rounded-lg uppercase border-indigo-700 border-2 hover:bg-slate-800 hover:border-black active:border-white active:scale-95 transition-all duration-100 ease-in-out'
+                    className='mt-8 mb-2 text-3xl font-bold select-none text-white bg-red-500 py-1 px-20 rounded-lg uppercase border-red-700 border-2 hover:bg-red-900 hover:border-black active:border-white active:scale-95 transition-all duration-100 ease-in-out'
                     onClick={handleCheckout}
                   >
                     Buy
@@ -245,6 +258,11 @@ export default function Cart() {
                 </div>
               </>
             )}
+          </div>
+
+          <div style={{ position: 'absolute', zIndex: '0', bottom: 0, width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'end'}}>
+            <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364679/DullWeen/uyq1h4ykblepb4qqygri.png" alt="" style={{transform: 'scaleX(-1)', height: '169px'}}/>
+            <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364666/DullWeen/keoupxnmeqbvn5aiylgz.png" alt="" style={{ width: '49%'}}/>
           </div>
         </div>
       </section>

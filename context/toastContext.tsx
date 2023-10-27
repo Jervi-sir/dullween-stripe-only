@@ -15,18 +15,8 @@ export const ToastProvider = ({ children }) => {
     toast.loading(
       (t) => (
         isLoading &&
-        <span
-          // padding included here so that all the toast is clickable
-          style={{
-            paddingTop: '0.4rem',
-            paddingBottom: '0.4rem',
-            cursor: 'pointer',
-          }}
-          // dismiss toast on click
-          onClick={() => toast.dismiss(t.id)}
-        >
+        <span>
           {/* any jsx content here */}
-          Loading...
         </span>
       ),
       {
@@ -40,11 +30,12 @@ export const ToastProvider = ({ children }) => {
           border: '1px solid #000',
           paddingLeft: '1rem',
           color: '#000',
-          backgroundColor: '#eef2ff',
+          //backgroundColor: '#eef2ff',
+          backgroundColor: '#97171d',
           userSelect: 'none',
         },
         iconTheme: {
-          primary: '#6366f1',
+          primary: '#9A1B22',
           secondary: '#eef2ff',
         },
       }

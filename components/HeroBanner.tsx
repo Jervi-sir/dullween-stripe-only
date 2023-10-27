@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { ToastContext } from '@/context/toastContext';
 import PriceFormatter from './PriceFormatter';
 import PriceCurrency from './PriceCurrency';
+import Marquee from "react-fast-marquee";
 
 interface IProps {
   heroBanner: IHeroBanner
@@ -27,28 +28,30 @@ export default function HeroBanner({ heroBanner }: IProps) {
         <section>
           <div className='bg-white flex items-center border-black border-b-2 flex-col sm:flex-row'>
             {/* PRODUCT DETAILS */}
-            <div className='relative flex justify-center items-center w-full h-96 sm:h-96 sm:w-1/2 py-12 px-1 xs5:px-4 xs3:px-8 lg:p-16 bg-fuchsia-300 border-black border-b-2 sm:border-r-2 sm:border-b-0'>
-              <div>
+            <div 
+              className='bg-hero-banner relative flex justify-center items-center w-full h-96 sm:h-96 sm:w-1/2 py-12 px-1 xs5:px-4 xs3:px-8 lg:p-16 bg-fuchsia-300 border-black border-b-2 sm:border-r-2 sm:border-b-0'
+            >
+              <div style={{position: 'relative', zIndex: 10}}>
                 {/* Hero Text */}
-                <h2 className='text-lg xs4:text-3xl xs3:text-5xl font-bold wordSpacingTight tracking-tight uppercase select-none mb-2'>
+                <h2 className='text-lg xs4:text-3xl xs3:text-5xl font-bold wordSpacingTight tracking-tight uppercase select-none mb-2 text-white'>
                   Random Offer
                 </h2>
 
                 {/* Product Name */}
-                <p className='text-2xl font-medium wordSpacingTight tracking-tight text-slate-800 mb-2'>
+                <p className='text-2xl font-medium wordSpacingTight tracking-tight text-slate-100 mb-2'>
                   {name}
                 </p>
 
                 {/* Price */}
-                <p className='text-4xl xs3:text-7xl font-black wordSpacingPrice tracking-tight text-emerald-700 mb-5'>
+                <p className='text-4xl xs3:text-7xl font-black wordSpacingPrice tracking-tight text-emerald-400 mb-5'>
                   {true ? (
                     // If discounted, show discount price and original price with strikethrough
                     <>
                       {/* &euro;  price.unit_amount */}
-                      {PriceCurrency({ currency_iso: price.currency})}
-                      {PriceFormatter({ price: price.unit_amount})} {' '}
+                      {PriceCurrency({ currency_iso: price.currency })}
+                      {PriceFormatter({ price: price.unit_amount })} {' '}
                       <span className='line-through text-red-800 text-xl xs3:text-3xl font-extrabold relative -top-4 -left-1 xs3:-top-9 select-none'>
-                        {}
+                        { }
                       </span>
                     </>
                   ) : (
@@ -90,13 +93,22 @@ export default function HeroBanner({ heroBanner }: IProps) {
           </div>
 
           {true && (
-            // If discounted, show discount percentage and time left
-            <p className='w-full bg-yellow-300 text-lg font-extrabold px-4 text-center border-yellow-400 border-b-4 select-none'>
-              {10}% 
-            </p>
+            <Marquee 
+              className='w-full bg-yellow-300 text-lg font-extrabold px-4 text-center border-yellow-400 border-b-4 select-none'
+              autoFill
+            >
+              <img src="https://res.cloudinary.com/dbnslnawc/image/upload/v1698364896/DullWeen/dk6kn0nddn2iboxt4zsc.png" style={{ height: '29px' }} />
+            </Marquee>
           )}
         </section>
       )}
     </>
   )
+
 }
+
+{/*
+  <p className='w-full bg-yellow-300 text-lg font-extrabold px-4 text-center border-yellow-400 border-b-4 select-none'>
+    {10}%
+  </p>
+*/}

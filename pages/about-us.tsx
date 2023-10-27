@@ -1,3 +1,5 @@
+import { Delivery } from '@/components/Delivery';
+import { TermsConditions } from '@/components/TermsConditions';
 import { ToastContext } from '@/context/toastContext';
 import styles from '@/styles/AboutUsPage.module.scss'
 import Head from 'next/head'
@@ -17,61 +19,73 @@ export default function AboutUsPage() {
           <Image
             className='object-cover max-h-[600px] select-none'
             fill
-            src='/team.svg'
+            src='https://res.cloudinary.com/dbnslnawc/image/upload/v1698364949/DullWeen/hn7kzaxcaol1tzbm7y3j.png'
             alt='team'
           />
         </div>
-        <div className='bg-indigo-200 px-1 xs4:px-4 xs:px-10 pt-20 pb-40 flex flex-col justify-center items-center'>
+        <div className='backdrop-blur-sm bg-white/20 px-1 xs4:px-4 xs:px-10 pt-20 pb-40 flex flex-col justify-center items-center'>
           <div className='relative -top-[7.4rem] w-full'>
-            <div className='absolute top-[4.6rem] left-1 w-24 h-1 bg-violet-500'></div>
-            <div className='absolute top-[4.1rem] left-1 w-24 h-1 bg-stone-500'></div>
-            <h1 className='relative xs2:absolute top-0 left-0 text-7xl font-extrabold wordSpacingTight tracking-tight uppercase'>
+            <div className='absolute top-[4.6rem] left-1 w-24 h-1 bg-red-500'></div>
+            <div className='absolute top-[4.1rem] left-1 w-24 h-1 bg-red-700'></div>
+            <h1 className='relative xs2:absolute top-0 left-0 text-7xl font-extrabold wordSpacingTight tracking-tight uppercase text-yellow-300'>
               Who We Are
             </h1>
           </div>
-          <div className='mb-10 text-xl font-medium tracking-tight max-w-prose'>
-            <p className='mb-7'>
-              We are a team of tech enthusiasts who are passionate about the
-              latest Apple products and accessories.
+          <div className='mb-10 text-xl font-medium tracking-tight max-w-prose '>
+            <p className='mb-7 text-white'>
+              Emerged from a simple idea: to bring joy and delight to every home during the Christmas season.
             </p>
-            <p className='mb-7'>
-              At our store, we offer a wide range of products, including
-              iPhones, AirPods, cool gadgets and more. We believe that everyone
-              should have access to the latest and greatest technology, which is
-              why we are committed to providing high-quality products at
-              affordable prices.
+            <p className='mb-7 text-white'>
+              Since our inception in 2022,
+              we've grown from a small, local operation to a booming online hub.
             </p>
-            <p className='mb-7'>
-              Our website is built with Next.js, Typescript, Sanity, Stripe, and
-              Tailwind, which allows us to create a fast and seamless shopping
-              experience for our customers.
+            <p className='mb-7 text-white'>
+              Our passion for excellence and commitment to the community has allowed us to become the go-to destination for everyone's Halloween needs.
             </p>
-            <div className='mb-7'>
-              <h2 className='mb-4 text-5xl font-bold'>Contacts</h2>
+            <div className='mb-7 text-white'>
+              <h2 className='mb-4 text-5xl font-bold text-yellow-300'>Contacts</h2>
               <p>
-                email:{' '}
+                <span className='text-red-900'>
+                  Instagram:{' '}
+                </span>
                 <a
-                  className={`${styles.emailLink} mb-4 text-indigo-700 hover:underline`}
+                  className={`${styles.emailLink} mb-4 text-yellow-300 hover:underline`}
+                  href='mailto:info@emanuelefavero.com'
+                >
+                  info@dullween.com
+                </a>
+              </p>
+              <p>
+                <span className='text-red-900'>
+                  TikTok:{' '}
+                </span>
+                <a
+                  className={`${styles.emailLink} mb-4 text-yellow-300 hover:underline`}
                   href='mailto:info@emanuelefavero.com'
                 >
                   info@dullween.com
                 </a>
               </p>
             </div>
+
+            <div className='mb-7 text-white'>
+              <h2 className='mb-4 text-5xl font-bold text-yellow-300'>Terms & Conditions</h2>
+              <TermsConditions />
+            </div>
+            <div className='mb-7 text-white'>
+              <h2 className='mb-4 text-5xl font-bold text-yellow-300'>Delivery</h2>
+              <Delivery />
+            </div>
+
           </div>
           <div
             id='successPageCard'
-            className='tripleCardEffect bg-violet-300 border-2 border-black px:1 xs4:px-4 xs:px-4 py-4 flex flex-col justify-center items-center'
+            className='tripleCardEffect bg-red-300 border-2 border-black px:1 xs4:px-4 xs:px-4 py-4 flex flex-col justify-center items-center'
           >
-            <Link 
-              href='/'
-              
-            >
+            <Link href='/'>
               <button
-                className='
-    text-sm xs4:text-2xl font-bold select-none text-white bg-indigo-500 py-1 px-2 xs4:px-10 rounded-lg uppercase border-indigo-700 border-2 hover:bg-slate-800 hover:border-black active:border-white active:scale-95 transition-all duration-100 ease-in-out
-  '
-  onClick={showLoading}
+                className='text-sm xs4:text-2xl font-bold select-none text-white bg-red-700 py-1 px-2 xs4:px-10 rounded-lg uppercase border-red-900 border-2 hover:bg-red-900 hover:border-black active:border-white active:scale-95 transition-all duration-100 ease-in-out'
+                onClick={showLoading}
               >
                 Continue Shopping
               </button>

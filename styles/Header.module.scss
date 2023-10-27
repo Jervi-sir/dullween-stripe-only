@@ -25,4 +25,8 @@
   &:hover:after {
     transform: scaleX(1);
   }
+
+  &:after .active{
+    transform: scaleX(1);
+  }
 }

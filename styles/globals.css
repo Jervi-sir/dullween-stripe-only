@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DEFAULT STYLING */
-:root {
-  --color-background: #ffffff;
+/* DEFAULT STYLING 
+
   --color-primary: #6366f1;
   --color-primary-darker: #4338ca;
+*/
+:root {
+  --color-background: #ffffff;
+  --color-primary: #9F2027;
+  --color-primary-darker: #9F2027;
   --color-selection: rgba(92, 113, 252, 0.25);
   --color-text: #000;
   --color-p: #000;
@@ -148,8 +152,8 @@ p {
 /* add a double hard shadow to the bottom right to heroButtonCTA */
 .tripleCardEffect {
   position: relative;
-  box-shadow: 0.2rem 0.3rem 0 0rem #4ade80, 0.2rem 0.3rem 0 0.1rem rgb(0, 0, 0),
-    0.5rem 0.6rem 0 0rem #fde047, 0.5rem 0.6rem 0 0.1rem rgb(0, 0, 0);
+  box-shadow: 0.2rem 0.3rem 0 0rem #9A1B22, 0.2rem 0.3rem 0 0.1rem rgb(0, 0, 0),
+    0.5rem 0.6rem 0 0rem #fde779, 0.5rem 0.6rem 0 0.1rem rgb(0, 0, 0);
   transition: box-shadow 0.25s ease-in-out, top 0.15s ease-in-out,
     left 0.15s ease-in-out;
 }
@@ -174,4 +178,52 @@ p {
 
 .zoom-container:hover > img {
   transform: scale(1.2);  /* Adjust the scale as per your requirement */
+}
+
+
+.top-banner {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .top-banner {
+    justify-content: space-between;
+  }
+}
+
+
+.bg-title-banner {
+  background-color: #FFE8DB;
+  opacity: 0.8;
+  background-image: linear-gradient(to right, #FFEFE4, #FFEFE4 16px, #FFE8DB 16px, #FFE8DB );
+  background-size: 32px 100%;
+}
+
+.bg-hero-banner {
+  background-color: #97171d;
+  opacity: 0.8;
+  background-image: linear-gradient(-45deg, #97171d, #97171d 50%, #9A1B22 50%, #9A1B22);
+  background-size: 32px 32px;
+}
+
+.bg-hero-products {
+  background-color: #C7D2FE;
+  opacity: 1;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #C7D2FE 40px ), repeating-linear-gradient( #bbc8fc55, #bbc8fc );
+}
+
+.bg-hero-products-red {
+  background-color: #B0372E;
+  opacity: 1;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #B0372E 40px ), repeating-linear-gradient( #9f202755, #9f2027 );
+}
+
+.bg-about-us-blurry {
+  background-color: #B0372E;
+
 }

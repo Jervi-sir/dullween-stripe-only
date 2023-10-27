@@ -84,6 +84,7 @@ export function StateContextProvider({
             paddingTop: '0.4rem',
             paddingBottom: '0.4rem',
             cursor: 'pointer',
+            color: 'white'
           }}
           // dismiss toast on click
           onClick={() => toast.dismiss(t.id)}
@@ -103,11 +104,13 @@ export function StateContextProvider({
           border: '1px solid #000',
           paddingLeft: '1rem',
           color: '#000',
-          backgroundColor: '#eef2ff',
+          //backgroundColor: '#eef2ff',
+          backgroundColor: '#97171d',
           userSelect: 'none',
         },
         iconTheme: {
-          primary: '#6366f1',
+          //primary: '#6366f1',
+          primary: '#008000',
           secondary: '#eef2ff',
         },
       }

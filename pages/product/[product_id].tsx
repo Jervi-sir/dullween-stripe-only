@@ -70,23 +70,23 @@ export default function ProductDetailPage({ product, products }: IProps) {
         </nav>
 
         {/* PRODUCT DETAILS */}
-        <div className='w-full flex justify-center items-center h-96 xs5:h-custom-mobile xs2:h-96 sm:h-96 sm:w-1/2 py-16 sm:py-8 md:py-16 px-1 xs5:px-4 xs3:px-8 bg-indigo-100 border-black border-t-2 sm:border-l-2 sm:border-t-0'>
+        <div className='bg-hero-banner w-full flex justify-center items-center h-96 xs5:h-custom-mobile xs2:h-96 sm:h-96 sm:w-1/2 py-16 sm:py-8 md:py-16 px-1 xs5:px-4 xs3:px-8 bg-indigo-100 border-black border-t-2 sm:border-l-2 sm:border-t-0'>
           <div>
-            <h1 className='wordSpacingTight text-3xl font-bold tracking-tight leading-8 mb-1'>
+            <h1 className='wordSpacingTight text-3xl font-bold tracking-tight leading-8 mb-1 text-white'>
               {product.name}
             </h1>
-            <p className='text-lg font-normal'>{product.description}</p>
-            <p className='wordSpacingTight tracking-tight text-4xl font-extrabold mb-4'>
+            <p className='text-lg font-normal text-white'>{product.description}</p>
+            <p className='wordSpacingTight tracking-tight text-4xl font-extrabold mb-4 text-amber-300'>
               {PriceCurrency({ currency_iso: product.price.currency})}
               {PriceFormatter({ price: product.price.unit_amount})}
             </p>
 
             {/* Product Quantity */}
             <nav className='flex flex-col xs3:flex-row justify-start items-center mb-2'>
-              <p className='text-md font-semibold select-none mr-3 mb-3 xs3:mb-0'>
+              <p className='text-md font-semibold select-none mr-3 mb-3 xs3:mb-0 text-white'>
                 Quantity:
               </p>
-              <div className='flex flex-col xs5:flex-row'>
+              <div className='flex flex-col xs5:flex-row '>
                 <button
                   className='w-8 h-8 rounded-full bg-black text-red-400 text-3xl font-semibold text-center flex justify-center items-center select-none p-1 mr-1 hover:text-red-300 active:text-red-500 active:scale-95'
                   onClick={decQty}
@@ -106,11 +106,11 @@ export default function ProductDetailPage({ product, products }: IProps) {
             </nav>
 
             <nav className='flex flex-col xs3:flex-row justify-start items-center mb-5'>
-              <p className='text-md font-semibold select-none mr-3 mb-3 xs3:mb-0'>
+              <p className='text-md font-semibold select-none mr-3 mb-3 xs3:mb-0 text-white'>
                 Total:
               </p>
               <div className='flex flex-col xs5:flex-row'>
-                <span className='wordSpacingTight tracking-tight text-lg font-extrabold'>
+                <span className='wordSpacingTight tracking-tight text-lg font-extrabold text-amber-300'>
                   {PriceCurrency({ currency_iso: product.price.currency })}
                   {PriceFormatter({ price: (product.price.unit_amount) * (qty) })}
                 </span>
@@ -140,13 +140,13 @@ export default function ProductDetailPage({ product, products }: IProps) {
 
       {/* PRODUCT CARD CAROUSEL SECTION */}
       {/* TODO: Add swipe gestures (left, right) to carousel */}
-      <div className='marquee overflow-x-hidden bg-slate-200'>
+      <div className='marquee overflow-x-hidden bg-slate-200 bg-hero-products-red'>
         <div className='px-7 pt-7'>
-          <h2 className='font-extrabold text-2xl wordSpacingCompact tracking-tight select-none'>
+          <h2 className='font-extrabold text-2xl wordSpacingCompact tracking-tight select-none text-center text-white'>
             You may also like:
           </h2>
         </div>
-        <section className='container mx-auto flex gap-12 justify-center items-center py-16'>
+        <section className=' container mx-auto flex gap-12 justify-center items-center py-10'>
           {products.map((currentProduct: any) => (
             <>
               {currentProduct.id !== product.id ? (
@@ -158,6 +158,12 @@ export default function ProductDetailPage({ product, products }: IProps) {
               )}
             </>
           ))}
+          <div
+            className={`bg-white text-black rounded-lg w-full xs3:w-72 h-64 px-4 xs3:px-8 py-3 xs3:py-6 flex flex-col justify-center relative active:top-[0.1rem]`}
+            style={{marginLeft: '0em'}}
+          >
+          <img src="https://media.tenor.com/KIc7Bbbx7rIAAAAC/santa-claus-sneeking.gif" alt="" style={{height: '100%', width: '100%'}} />
+          </div>
         </section>
       </div>
     </>
