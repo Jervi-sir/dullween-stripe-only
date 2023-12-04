@@ -1,3 +1,3 @@
-const categoryName = ['apple', 'iphone'];
+const categoryName = [''];
 
 export default categoryName;
